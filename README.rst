@@ -2,6 +2,9 @@
  nose-blacklist
 ================
 
+.. image:: https://travis-ci.org/pglass/nose-blacklist.svg?branch=master
+    :target: https://travis-ci.org/pglass/nose-blacklist
+
 nose-blacklist is a plugin for nose_ that provides a powerful way of skipping
 tests without requiring code changes.
 
