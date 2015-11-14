@@ -5,17 +5,16 @@
 nose-blacklist is a plugin for nose_ that provides a powerful way of skipping
 tests without requiring code changes.
 
-Features:
-
 - Test cases are excluded by regex matching
-- Test modules, classes, and functions can be matched
+- Tests cases are matched by their fully-qualified names, including the module,
+  class, and function/method names.
 - Tests to skip can be sourced from one or more files, or from cli arguments
 
 
 Quickstart
 ==========
 
-.. code-block:: python
+.. code-block:: shell
 
     $ pip install nose-blacklist
 
@@ -26,6 +25,8 @@ Quickstart
 
 Blacklist strings can be specified from one or more files. Blacklist files can
 be used in conjunction with the ``--blacklist`` arguments.
+
+.. code-block:: shell
 
     $ cat blacklist.txt
     test_thing
