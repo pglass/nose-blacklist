@@ -13,7 +13,7 @@ class TestResultsParsing(unittest.TestCase):
         self.assertEqual(results.n_failures, 0)
         self.assertEqual(results.n_errors, 0)
         self.assertEqual(results.n_tests, 6)
-        self.assertGreater(results.test_time, 0)
+        self.assertGreaterEqual(results.test_time, 0)
 
         short_results_status = set([r.status for r in results.shortresults])
         short_results_names = set([r.name for r in results.shortresults])
