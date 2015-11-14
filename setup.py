@@ -10,7 +10,7 @@ setup_params = dict(
     author='Paul Glass',
     author_email='pnglass@gmail.com',
     url='https://github.com/pglass/nose-blacklist',
-    keywords='nose whitelist blacklist skip exclude',
+    keywords='nose blacklist skip exclude',
     packages=setuptools.find_packages(),
     package_data={'': ['LICENSE']},
     package_dir={'noseblacklist': 'noseblacklist'},
@@ -29,6 +29,11 @@ setup_params = dict(
         'Programming Language :: Python :: 2.7',
         'Topic :: Software Development :: Testing',
     ],
+    entry_points = {
+        'nose.plugins.0.10': [
+            'blacklist = noseblacklist.plugin:BlacklistPlugin',
+        ]
+    },
 )
 
 if __name__ == '__main__':
