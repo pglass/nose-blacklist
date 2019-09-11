@@ -2,12 +2,15 @@ import logging
 import os
 import re
 import subprocess
+import six
 
 TEST_DIR = os.path.join(os.path.dirname(__file__), 'sampletests')
 LOG = logging.getLogger(__name__)
 
 
 def indent(s):
+    if isinstance(s, six.binary_type):
+        s = s.decode()
     indent = "  "
     lines = s.split('\n')
     return indent + "\n{0}".format(indent).join(lines)
@@ -155,8 +158,8 @@ class Results(object):
             self.parse_footer(parts[-2], parts[-1])
 
     def parse_shortresults(self, text):
-        regex_method = re.compile("(.+) \((.+)\) ... (\w+)")
-        regex_function = re.compile("(.+) ... (\w+)")
+        regex_method = re.compile(r"(.+) \((.+)\) ... (\w+)")
+        regex_function = re.compile(r"(.+) ... (\w+)")
         for line in text.split('\n'):
             # try to parse a normal result line
             groups = run_regex(line, regex_method)
@@ -175,7 +178,7 @@ class Results(object):
 
     def parse_footer(self, footer_start, footer_end):
         # parse the "Ran N tests in Xs" portion
-        regex = re.compile("Ran (\d+) tests in (.+)s")
+        regex = re.compile(r"Ran (\d+) tests in (.+)s")
         groups = run_regex(footer_start, regex)
         self.n_tests = int(groups[0])
         self.test_time = float(groups[1])
@@ -189,7 +192,7 @@ class Results(object):
         self.n_failures = 0
 
         # parse the "(SKIP=1, failures=2)" portion
-        regex = re.compile("(\w+=\d+)")
+        regex = re.compile(r"(\w+=\d+)")
         groups = run_regex(footer_end, regex) or []
         for item in groups:
             parts = item.split('=')
