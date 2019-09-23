@@ -19,6 +19,7 @@ setup_params = dict(
     long_description=long_description,
     install_requires=[
         'nose',
+        'six'
     ],
     classifiers=[
         'Development Status :: 1 - Planning',
@@ -27,6 +28,7 @@ setup_params = dict(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Testing',
     ],
     entry_points = {

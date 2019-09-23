@@ -1,6 +1,7 @@
 import logging
 import os
 import re
+import six
 
 from nose.plugins import Plugin
 
@@ -44,9 +45,14 @@ class BlacklistPlugin(Plugin):
         self._add_blacklists_from_files(options.blacklist_files)
 
     def wantMethod(self, method):
+        if six.PY2:
+            im_class = method.im_class
+        else:
+            im_class = method.__self__.__class__
+
         test_name = "{0}.{1}.{2}".format(
-            method.im_class.__module__,
-            method.im_class.__name__,
+            im_class.__module__,
+            im_class.__name__,
             method.__name__,
         )
         if self._is_blacklisted(test_name):
