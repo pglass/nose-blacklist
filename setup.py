@@ -2,7 +2,7 @@ import setuptools
 
 long_description = open('README.rst').read()
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 
 setup_params = dict(
     name='nose-blacklist',
@@ -12,6 +12,7 @@ setup_params = dict(
     url='https://github.com/pglass/nose-blacklist',
     keywords='nose blacklist skip exclude',
     packages=setuptools.find_packages(),
+    license='MIT',
     package_data={'': ['LICENSE']},
     package_dir={'noseblacklist': 'noseblacklist'},
     include_package_data=True,
@@ -22,13 +23,14 @@ setup_params = dict(
         'six'
     ],
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 3 - Alpha',
         'Environment :: Plugins',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Software Development :: Testing',
     ],
     entry_points = {
