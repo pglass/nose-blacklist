@@ -136,8 +136,9 @@ class Results(object):
 
     def parse(self):
         LOG.debug('parsing results')
+        LOG.debug('os.linesep = %s' % os.linesep)
 
-        parts = self.raw.strip().split('\n\n')
+        parts = self.raw.strip().split(os.linesep * 2)
         if not parts:
             LOG.error("  nothing to parse!")
             return
